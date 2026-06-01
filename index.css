@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.word-boxes {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.letter-box {
+    width: 55px;
+    min-height: 55px;
+    border: 2px solid #999;
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+    padding: 4px;
+}
+
+.letter-box.drag-over {
+    border-color: black;
+    background: #eee;
+}
+
+.column-letter {
+    padding: 12px;
+    min-width: 36px;
+    border: none;
+    border-radius: 6px;
+    background: lightgray;
+    font-weight: bold;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.column-letter.yellow {
+    background: #c9b458;
+    color: white;
+}
+
+.column-letter.green {
+    background: #6aaa64;
+    color: white;
+}
+
+.keyboard {
+    display: grid;
+    gap: 8px;
+    max-width: 500px;
+}
+  
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+  
+.key {
+    padding: 12px;
+    min-width: 36px;
+    border: none;
+    border-radius: 6px;
+    background: lightgray;
+    font-weight: bold;
+    cursor: pointer;
+}
+  
+.key.black {
+    background: #3a3a3c;
+    color: white;
+}
+  
+.key.yellow {
+    background: #c9b458;
+    color: white;
+}
+  
+.key.green {
+    background: #6aaa64;
+    color: white;
+}
+
+#solve-button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#results-container {
+    margin-top: 25px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    font-family: inherit;
+}
+
+#results-container h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    font-family: inherit;
+    text-transform: uppercase;
+}
