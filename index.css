@@ -14,6 +14,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: min(95vw, 600px);
+}
+
+button {
+    font: inherit;
 }
 
 .word-boxes {
@@ -43,6 +48,10 @@ body {
 }
 
 .column-letter {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    appearance: none;
+
     padding: 12px;
     min-width: 36px;
     border: none;
@@ -69,6 +78,7 @@ body {
     display: grid;
     gap: 8px;
     max-width: 500px;
+    width: 100%;
 }
   
 .row {
@@ -78,11 +88,19 @@ body {
 }
   
 .key {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+
     padding: 12px;
     min-width: 36px;
     border: none;
     border-radius: 6px;
     background: lightgray;
+    color: black;
     font-weight: bold;
     cursor: pointer;
 }
@@ -103,12 +121,22 @@ body {
 }
 
 #solve-button {
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+
     margin-top: 20px;
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+
+    background: lightgray;
+    color: black;
 }
 
 #results-container {
