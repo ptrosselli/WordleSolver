@@ -62,15 +62,6 @@ boxes.forEach(box => {
   box.addEventListener("drop", event => {
     event.preventDefault();
   
-    // If dragging an existing tile, move it instead of copying it
-    if (draggedTile) {
-      box.appendChild(draggedTile);
-      draggedTile = null;
-      box.classList.remove("drag-over");
-      return;
-    }
-  
-    // If dragging from keyboard, create a new tile
     const letter = event.dataTransfer.getData("text/plain");
   
     const tile = createBoxTile(letter);
@@ -81,37 +72,57 @@ boxes.forEach(box => {
 });
 
 function createBoxTile(letter) {
-    const tile = document.createElement("button");
-  
-    tile.className = "column-letter yellow";
-    tile.textContent = letter;
-    tile.dataset.key = letter;
-    tile.dataset.stateIndex = "0";
-    tile.draggable = true;
-  
-    tile.addEventListener("dragstart", event => {
-      draggedTile = tile;
-      event.dataTransfer.setData("text/plain", letter);
-    });
-  
-    tile.addEventListener("dragend", event => {
-      const droppedSuccessfully =
-        event.dataTransfer.dropEffect &&
-        event.dataTransfer.dropEffect !== "none";
-  
-      if (!droppedSuccessfully && draggedTile === tile) {
-        tile.remove();
-      }
-  
-      draggedTile = null;
-    });
-  
-    tile.addEventListener("click", event => {
+  const tile = document.createElement("button");
+
+  tile.className = "column-letter yellow";
+  tile.textContent = letter;
+  tile.dataset.key = letter;
+  tile.dataset.stateIndex = "0";
+
+  // Important: box tiles should NOT be draggable anymore
+  tile.draggable = false;
+
+  let holdTimer = null;
+  let wasHeld = false;
+
+  function startHoldTimer(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    wasHeld = false;
+
+    holdTimer = setTimeout(() => {
+      wasHeld = true;
+      tile.remove();
+    }, 650);
+  }
+
+  function cancelHoldTimer(event) {
+    if (event) {
       event.stopPropagation();
-      cycleState(tile, boxStates);
-    });
-  
-    return tile;
+    }
+
+    clearTimeout(holdTimer);
+    holdTimer = null;
+  }
+
+  tile.addEventListener("pointerdown", startHoldTimer);
+
+  tile.addEventListener("pointerup", cancelHoldTimer);
+  tile.addEventListener("pointerleave", cancelHoldTimer);
+  tile.addEventListener("pointercancel", cancelHoldTimer);
+
+  tile.addEventListener("click", event => {
+    event.stopPropagation();
+
+    if (wasHeld) {
+      return;
+    }
+
+    cycleState(tile, boxStates);
+  });
+
+  return tile;
 }
 
 const solveButton = document.getElementById("solve-button");
