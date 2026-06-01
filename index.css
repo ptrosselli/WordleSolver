@@ -1,41 +1,51 @@
 body {
     margin: 0;
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 40px 12px 0;
+
+    padding-top: 60px;
     box-sizing: border-box;
 }
 
 .center {
-    width: min(100%, 500px);
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: min(95vw, 600px);
 }
 
-.word-boxes,
-.keyboard,
-#results-container {
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
+button {
+    font: inherit;
 }
 
 .word-boxes {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  margin-bottom: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+    margin-bottom: 30px;
 }
 
 .letter-box {
-    width: 100%;
+    width: 55px;
     min-height: 55px;
-    box-sizing: border-box;
+    border: 2px solid #999;
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+    padding: 4px;
 }
 
+.letter-box.drag-over {
+    border-color: black;
+    background: #eee;
+}
 
 .column-letter {
     -webkit-appearance: none;
@@ -77,14 +87,23 @@ body {
     gap: 6px;
 }
   
-
 .key {
-    flex: 1;
-    max-width: 44px;
-    min-width: 0;
-    height: 48px;
-    padding: 0;
-  }
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+
+    padding: 12px;
+    min-width: 36px;
+    border: none;
+    border-radius: 6px;
+    background: lightgray;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
   
 .key.black {
     background: #3a3a3c;
