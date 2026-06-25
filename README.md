@@ -12,6 +12,3 @@ python -m http.server 8000<br/>
 <br/>
 <br/>
 
-### Credits
-sujithps for Oxford English Dictionary.txt <br/>
-https://github.com/sujithps/Dictionary/tree/master <br/>
