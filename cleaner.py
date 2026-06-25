@@ -2,7 +2,7 @@ import re
 
 pattern = re.compile(r'^([A-Za-z-]+)\s+(.*)$')
 
-with open("Oxford English Dictionary.txt", "r", encoding="utf-8") as file:
+with open("valid-wordle-words.txt", "r", encoding="utf-8") as file:
     for line in file:
         line = line.strip()
 

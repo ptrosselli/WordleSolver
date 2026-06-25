@@ -163,7 +163,7 @@ async function solve() {
       });
     });
   
-    const response = await fetch("wordle_dictionary.txt");
+    const response = await fetch("valid-wordle-words.txt");
     const text = await response.text();
   
     const words = text
